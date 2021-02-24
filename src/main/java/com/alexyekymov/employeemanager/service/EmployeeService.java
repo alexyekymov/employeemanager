@@ -2,14 +2,16 @@ package com.alexyekymov.employeemanager.service;
 
 import com.alexyekymov.employeemanager.exception.UserNotFoundException;
 import com.alexyekymov.employeemanager.model.Employee;
-import com.alexyekymov.employeemanager.repositoty.EmployeeRepository;
+import com.alexyekymov.employeemanager.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 
 @Service
+@Transactional
 public class EmployeeService {
     private final EmployeeRepository employeeRepository;
 
@@ -23,7 +25,7 @@ public class EmployeeService {
         return employeeRepository.save(employee);
     }
 
-    public List<Employee> findAllEmployee() {
+    public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();
     }
 
