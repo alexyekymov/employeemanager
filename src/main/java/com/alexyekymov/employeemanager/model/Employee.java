@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Entity
 public class Employee implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
     private Long id;
     private String name;
@@ -20,8 +20,7 @@ public class Employee implements Serializable {
     public Employee() {
     }
 
-    public Employee(Long id, String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
-        this.id = id;
+    public Employee(String name, String email, String jobTitle, String phone, String imageUrl, String employeeCode) {
         this.name = name;
         this.email = email;
         this.jobTitle = jobTitle;
@@ -58,8 +57,8 @@ public class Employee implements Serializable {
         return jobTitle;
     }
 
-    public void setJobTitle(String jobTime) {
-        this.jobTitle = jobTime;
+    public void setJobTitle(String jobTitle) {
+        this.jobTitle = jobTitle;
     }
 
     public String getPhone() {
@@ -92,10 +91,9 @@ public class Employee implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", jobTime='" + jobTitle + '\'' +
+                ", jobTitle='" + jobTitle + '\'' +
                 ", phone='" + phone + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
-                ", employeeCode='" + employeeCode + '\'' +
                 '}';
     }
 }
